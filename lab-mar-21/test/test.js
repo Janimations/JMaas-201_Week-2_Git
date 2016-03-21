@@ -1,3 +1,5 @@
+//Jmaas Week-2 Monday Lab Assignment:
+
 var assert = require('assert');                 // assert is part of the test environment
 var compute = require('../js/compute.js');
 
@@ -27,5 +29,5 @@ describe('My first test', function() {
   it('should return true because 18 is amultiple of 6', function() { assert(true === compute.multipleSix(18)); });
   it('should return false because 5 is not a multiple of six', function() { assert(false === compute.multipleSix(25)); });
 
-  
+
 });
