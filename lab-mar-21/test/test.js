@@ -36,13 +36,14 @@ describe('My first test', function() {
 
   // Test problem-1:
   it('should return 10 because arg1 + arg2 = 10', function() {
-      assert(10 == compute.sum(6, 4)); 
+      assert(10 == compute.sum(6, 4));
   });
 
-
-
-
   // Test problem-2:
+  it('should return 25 because arg1 * arg2 = 25', function() {
+      assert(25 == compute.multiply(5, 5)); 
+  });
+
 
   // Test problem-3:
 
