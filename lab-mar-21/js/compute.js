@@ -18,24 +18,10 @@ exports.getQuestion = getQuestion;
 function addFive(num) {
   return num + 5;
 }
-
-// if(addFive(0) == 5) {
-//   console.log("test 1 passed!");
-// } else {
-//   console.log("test 1 failed");
-// }
-// if(addFive(100) == 105) {
-//   console.log("test 2 passed!");
-// } else {
-//   console.log("test 2 failed");
-// }
-// if(addFive(11) == 16) {
-//   console.log("test 3 passed!");
-// } else {
-//   console.log("test 3 failed");
-// }
-
 exports.addFive = addFive;
+
+
+// In-Class Demo:
 
 function iseven(num) {
     return (num % 2) === 0;
@@ -56,3 +42,30 @@ function multipleSix(num) {
     }
 }
 exports.multipleSix = multipleSix;
+
+
+/***********************************
+Monday Lab Assignments:
+***********************************/
+
+// problem-1:
+function sum(arg1, arg2) {
+    return arg1 + arg2;
+}
+exports.sum = sum;
+// problem-2:
+
+// problem-3:
+
+// problem-4:
+
+// problem-5:
+
+// problem-6:
+
+
+
+
+
+
+//
