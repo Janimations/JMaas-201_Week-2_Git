@@ -1,5 +1,4 @@
-// JMaas Week-2 Monday Lab Assignment:
-
+// Class demo code
 
 /********************************************************
  * Example of TDD on a feature used in Week 1's labwork *

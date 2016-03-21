@@ -1,3 +1,5 @@
+//Jmaas Week-2 Monday Lab Assignment:
+
 /********************************************************
  * Example of TDD on a feature used in Week 1's labwork *
  ********************************************************/
@@ -51,6 +53,6 @@ function multipleSix(num) {
         return true;
     } else {
         return false;
-    } 
+    }
 }
 exports.multipleSix = multipleSix;
