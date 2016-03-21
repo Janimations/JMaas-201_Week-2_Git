@@ -35,14 +35,15 @@ describe('My first test', function() {
   // MONDAY LAB WORK:
 
   // Test problem-1:
-  it('should return 10 because arg1 + arg2 = 10', function() {
-      assert(10 == compute.sum(6, 4)); 
+  it('should return 10 because arg1 + arg2 = 10', function() {     // test no.12
+      assert(10 == compute.sum(6, 4));
   });
 
-
-
-
   // Test problem-2:
+  it('should return 25 because arg1 * arg2 = 25', function() {      // test no.13
+      assert(25 == compute.multiply(5, 5));
+  });
+
 
   // Test problem-3:
 

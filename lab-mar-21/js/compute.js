@@ -51,9 +51,16 @@ Monday Lab Assignments:
 // problem-1:
 function sum(arg1, arg2) {
     return arg1 + arg2;
+    console.log('The sum of ' + arg1 + ' and ' + arg2 + ' is ' + (arg1 + arg2));
 }
 exports.sum = sum;
+
 // problem-2:
+function multiply(arg1, arg2) {
+    return arg1 * arg2;
+    console.log('The product of ' + arg1 + ' times ' + arg2 + ' is ' + (arg1 * arg2));
+}
+exports.multiply = multiply;
 
 // problem-3:
 
