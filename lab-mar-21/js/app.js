@@ -1,5 +1,8 @@
 //Jmaas Week-2 Monday Lab Assignment:
 
+// workaround - bug-fix:
+exports = {};
+
 // Assignment Problems:
 
 var problem_1_In = document.getElementById('problem_1_In');

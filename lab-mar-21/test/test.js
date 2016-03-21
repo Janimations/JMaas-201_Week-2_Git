@@ -4,6 +4,7 @@ var assert = require('assert');                 // assert is part of the test en
 var compute = require('../js/compute.js');
 
 describe('My first test', function() {
+
   it('should check first question', function() {
     assert.deepEqual(compute.getQuestion(0), 'first');
   });
@@ -44,8 +45,11 @@ describe('My first test', function() {
       assert(25 == compute.multiply(5, 5));
   });
 
-
   // Test problem-3:
+  it('should pass because problem3Array[0] = 12 and problem3Array[1] = 50', function() {        // test no.14
+      var problem3Array = compute.sumAndMultiply(5, 5, 2);
+      assert(12 == problem3Array[0] && 50 == problem3Array[1]);
+  });
 
   // Test problem-4:
 
@@ -53,10 +57,4 @@ describe('My first test', function() {
 
   // Test problem-6:
 
-
-
-
-
-
-
-});
+}); // describe close
