@@ -1,5 +1,7 @@
 //Jmaas Week-2 Monday Lab Assignment:
 
+
+
 /********************************************************
  * Example of TDD on a feature used in Week 1's labwork *
  ********************************************************/
@@ -49,20 +51,26 @@ Monday Lab Assignments:
 ***********************************/
 
 // problem-1:
-function sum(arg1, arg2) {
-    return arg1 + arg2;
-    console.log('The sum of ' + arg1 + ' and ' + arg2 + ' is ' + (arg1 + arg2));
+function sum(arg1, arg2, arg3) {
+    //console.log('The sum of ' + arg1 + ' and ' + arg2 + ' and ' + arg3 + ' is ' + (arg1 + arg2 + arg3));
+    return arg1 + arg2 + arg3;
 }
 exports.sum = sum;
 
 // problem-2:
-function multiply(arg1, arg2) {
-    return arg1 * arg2;
-    console.log('The product of ' + arg1 + ' times ' + arg2 + ' is ' + (arg1 * arg2));
+function multiply(arg1, arg2, arg3) {
+    //console.log('The product of ' + arg1 + ' times ' + arg2 + ' times ' + arg3 + ' is ' + (arg1 * arg2) * arg3);
+    return (arg1 * arg2) * arg3;
 }
 exports.multiply = multiply;
 
 // problem-3:
+function sumAndMultiply (arg1, arg2, arg3) {
+    console.log('The sum of ' + arg1 + ' and ' + arg2 + ' and ' + arg3 + ' is ' + (arg1 + arg2 + arg3));
+    console.log('The product of ' + arg1 + ' times ' + arg2 + ' times ' + arg3 + ' is ' + (arg1 * arg2) * arg3);
+    return [sum(arg1, arg2, arg3), multiply(arg1, arg2, arg3)];
+}
+exports.sumAndMultiply = sumAndMultiply;
 
 // problem-4:
 
