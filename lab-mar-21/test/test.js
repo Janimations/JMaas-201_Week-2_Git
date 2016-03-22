@@ -61,8 +61,6 @@ describe('My first test', function() {
       assert(120 === compute.multiplyArray([1, 2, 3, 4, 5]) );
   });
 
-  // Test problem-6:
-
 }); // describe close
 
 
