@@ -73,10 +73,36 @@ function sumAndMultiply (arg1, arg2, arg3) {
 exports.sumAndMultiply = sumAndMultiply;
 
 // problem-4:
+function sumArray(array) {
+    var sum = 0;
+    for (var i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum;
+}
+exports.sumArray = sumArray;
 
 // problem-5:
 
 // problem-6:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
