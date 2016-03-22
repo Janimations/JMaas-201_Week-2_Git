@@ -52,6 +52,10 @@ describe('My first test', function() {
   });
 
   // Test problem-4:
+  it('should pass because 15 is the sum of 1, 2, 3, 4 and 5', function() {        // test no.15
+      assert(15 == compute.sumArray([1, 2, 3, 4, 5]));
+  });
+  
 
   // Test problem-5:
 
