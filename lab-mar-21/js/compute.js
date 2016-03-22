@@ -78,6 +78,7 @@ function sumArray(array) {
     for (var i = 0; i < array.length; i++) {
         sum += array[i];
     }
+    console.log(array + " was passed in as an array of numbers, and " + sum + " is their sum.")
     return sum;
 }
 exports.sumArray = sumArray;
