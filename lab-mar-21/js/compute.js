@@ -89,7 +89,7 @@ function multiplyArray(array) {
     for (var i = 0; i < array.length; i++) {
         product = product * array[i];
     }
-    console.log("The numbers 2,3,4 have a product of 20.");
+    console.log("The numbers 1*2*3*4*5 have a product of 120.");
     //console.table(array);             // causes error msg: TypeError: console.table is not a function
     return product;
 }
