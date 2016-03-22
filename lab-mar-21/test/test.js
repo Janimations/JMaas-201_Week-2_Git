@@ -57,7 +57,7 @@ describe('My first test', function() {
   });
 
   // Test problem-5:
-  it('should pass because 120 is the producct of 1, 2, 3, 4 and 5', function() {        // test no.15
+  it('should pass because 120 is the producct of 1*2*3*4*5', function() {        // test no.15
       assert(120 === compute.multiplyArray([1, 2, 3, 4, 5]) );
   });
 
