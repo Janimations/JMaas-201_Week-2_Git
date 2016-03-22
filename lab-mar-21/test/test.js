@@ -36,13 +36,13 @@ describe('My first test', function() {
   // MONDAY LAB WORK:
 
   // Test problem-1:
-  it('should return 10 because arg1 + arg2 = 10', function() {     // test no.12
-      assert(10 == compute.sum(6, 4));
+  it('should return 12 because arg1 + arg2 + arg3 = 12', function() {     // test no.12
+      assert(12 == compute.sum(6, 4, 2));
   });
 
   // Test problem-2:
-  it('should return 25 because arg1 * arg2 = 25', function() {      // test no.13
-      assert(25 == compute.multiply(5, 5));
+  it('should return 50 because arg1 * arg2 * arg3 = 50', function() {      // test no.13
+      assert(50 == compute.multiply(5, 5, 2));
   });
 
   // Test problem-3:
@@ -53,12 +53,36 @@ describe('My first test', function() {
 
   // Test problem-4:
   it('should pass because 15 is the sum of 1, 2, 3, 4 and 5', function() {        // test no.15
-      assert(15 == compute.sumArray([1, 2, 3, 4, 5]));
+      assert(15 === compute.sumArray([1, 2, 3, 4, 5]) );
   });
-  
 
   // Test problem-5:
+  it('should pass because 120 is the producct of 1, 2, 3, 4 and 5', function() {        // test no.15
+      assert(120 === compute.multiplyArray([1, 2, 3, 4, 5]) );
+  });
 
   // Test problem-6:
 
 }); // describe close
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
