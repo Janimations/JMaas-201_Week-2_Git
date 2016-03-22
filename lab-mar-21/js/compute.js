@@ -78,11 +78,23 @@ function sumArray(array) {
     for (var i = 0; i < array.length; i++) {
         sum += array[i];
     }
+    console.log(array + " was passed in as an array of numbers, and " + sum + " is their sum.");
     return sum;
 }
 exports.sumArray = sumArray;
 
 // problem-5:
+function multiplyArray(array) {
+    var product = 1;
+    for (var i = 0; i < array.length; i++) {
+        product = product * array[i];
+    }
+    console.log("The numbers 2,3,4 have a product of 20.");
+    //console.table(array);             // causes error msg: TypeError: console.table is not a function
+    return product;
+}
+exports.multiplyArray = multiplyArray;
+
 
 // problem-6:
 
