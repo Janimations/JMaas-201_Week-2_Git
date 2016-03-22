@@ -52,14 +52,14 @@ Monday Lab Assignments:
 
 // problem-1:
 function sum(arg1, arg2, arg3) {
-    //console.log('The sum of ' + arg1 + ' and ' + arg2 + ' and ' + arg3 + ' is ' + (arg1 + arg2 + arg3));
+    console.log('The sum of ' + arg1 + ' and ' + arg2 + ' and ' + arg3 + ' is ' + (arg1 + arg2 + arg3));
     return arg1 + arg2 + arg3;
 }
 exports.sum = sum;
 
 // problem-2:
 function multiply(arg1, arg2, arg3) {
-    //console.log('The product of ' + arg1 + ' times ' + arg2 + ' times ' + arg3 + ' is ' + (arg1 * arg2) * arg3);
+    console.log('The product of ' + arg1 + ' times ' + arg2 + ' times ' + arg3 + ' is ' + (arg1 * arg2) * arg3);
     return (arg1 * arg2) * arg3;
 }
 exports.multiply = multiply;
@@ -94,9 +94,6 @@ function multiplyArray(array) {
     return product;
 }
 exports.multiplyArray = multiplyArray;
-
-
-// problem-6:
 
 
 
