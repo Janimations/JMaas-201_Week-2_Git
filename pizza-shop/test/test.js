@@ -4,7 +4,7 @@
 var assert = require('assert');                 // assert is part of the test environment
 var compute = require('../js/compute.js');
 
-describe('My Pizza-shop tests', function() {
+describe('Demo Code Tests:', function() {
 
   //*****************************************//
   // In-Class DEMO: Monday
@@ -14,8 +14,20 @@ describe('My Pizza-shop tests', function() {
 
   it('should return false because 5 is not even', function() { assert(false === compute.iseven(5)); });
   //*****************************************//
+});
+
+
+
 
   // pizzaRandom() test:
+
+describe('pizzaRandom Test:', function() {
+    it('should return a random number between 4 and 10', function() { assert((>=4 && <=10) == compute.pizzaRandom(4, 10)); });
+});
+
+
+
+
 
   // deliveries()
 
@@ -30,7 +42,7 @@ describe('My Pizza-shop tests', function() {
   // makeData(this.hoursOpen, this.hoursClose) test:
 
 
-}); // describe close
+
 
 
 
