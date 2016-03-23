@@ -22,16 +22,17 @@ describe('Demo Code Tests:', function() {
   // pizzaRandom() test:
 
 describe('pizzaRandom Test:', function() {
-    it('should return a random number between 4 and 10', function() { assert((>=4 && <=10) == compute.pizzaRandom(4, 10)); });
+    it('should return a random number equal to or larger than 4 and equal to or smaller than 10', function() {
+        assert.equal(compute.pizzaRandom(4, 10), (>=4 && <=10)); });
 });
 
+// driversNeeded() test:
 
+describe('driversNeeded Test:', function() {
+  it('should return 2 because 4 / 3 rounded up is 2', function() {
+      assert(2 == compute.driversNeeded(4, 5)); });
+});
 
-
-
-  // deliveries()
-
-  // drivers()
 
   // hours24() test:
 
