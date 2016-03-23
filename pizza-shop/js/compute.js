@@ -31,20 +31,6 @@ exports.multiplyArray = multiplyArray;
 
 // pizzaRandom :
 
-function pizzaRandom(min, max) {
-    return math.floor((math.random() * (max +1) + min);
-}
-exports.pizzaRandom = pizzaRandom;
-
-
-
-// driversNeeded :
-
-function driversNeeded(min, max) {
-    var pizzasMade = pizzaRandom(min, max);
-    return math.ceiling(pizzasMade / 3)
-}
-
 
 
 

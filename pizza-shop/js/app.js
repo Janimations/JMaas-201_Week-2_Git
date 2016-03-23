@@ -50,7 +50,7 @@ function pizzaShop(location) {
 
                         [5, 20, 6, 11], // 11 pm
                         [5, 20, 6, 11], // 12 pm
-                        [5, 20, 6, 11], // 1 am
+                        [5, 20, 6, 11] // 1 am
                     ];
 
     this.pizzasMade = function () {                     // use 'this' because makePizzas() is called INSIDE of the pizzaShop Constructor!
@@ -81,6 +81,7 @@ function pizzaShop(location) {
                             var driversNeededArray = [];
                                 for (var i = 0; i < this.deliveries.length; i++) {
                                     driversNeededArray.push(math.ceiling(this.deliveries[i] / 3));
+                                };
                          };
 
     this.Timeslots = function () {
@@ -96,18 +97,77 @@ function pizzaShop(location) {
                             return wholeDayArray;
                       };
 
-}; // pizzaShop close
+};
 
+// // ShopData Object-Constructor:   //
+//
+// function shopData(location) {
+//
+//     this.location = location;
+//
+//     this.monday = function () {
+//
+//     };
+//     this.tuesday = function () {
+//
+//     };
+//     this.wednesday = function () {
+//
+//     };
+//     this.thursday = function () {
+//
+//     };
+//     this.friday = function () {
+//
+//     };
+//     this.Saturday = function () {
+//
+//     };
+//     this.Sunday = function () {
+//
+//     };
+//     this.weekTotal = function () {
+//
+//     };
+//
+//     this.weekAverage = function () {
+//
+//     };
+//
+// };  // shopData close
+
+// allShopsData  Object:
+
+//  var allShopsData = {
+//     mondayAverage = function () {
+//     },
+//     tuesdayAverage = function () {
+//     },
+//     wednesdayAverage = function () {
+//     },
+//     thursdayAverage = function () {
+//     },
+//     fridayAverage = function () {
+//     },
+//     SaturdayAverage = function () {
+//     },
+//     SundayAverage = function () {
+//     },
+//     weekAverage = function () {
+//     }
+// }  // allShopsData close
 
 
 // call new pizzaShop Instances and add to shopArray:
 
-var pizzaShopLocations = [Beaverton, Hillsboro, Downtown, NorthEast, Clackamas, PDXairport];
+var pizzaShopLocations = ["Beaverton", "Hillsboro", "Downtown", "NorthEast", "Clackamas", "PDXairport"];
 var shopArray = [];
 
 for (var i = 0; i < pizzaShopLocations.length; i++) {
     shopArray.push(pizzaShop(pizzaShopLocations[i]));
 };
+
+console.log(shopArray);
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
