@@ -60,6 +60,15 @@ function pizzaShop(location) {
                                 }
                             return pizzasArray;
                         };
+
+    this.totalPizzas = function () {
+                            var total = 0;
+                            for (var i = 0; i < this.pizzasMade.length; i++){
+                                total += i;
+                            }
+                            return total;
+                        };
+
     this.deliveries = function () {
                             var deliveriesArray = [];
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
@@ -67,6 +76,7 @@ function pizzaShop(location) {
                                 }
                             return deliveriesArray;
                         };
+
     this.driversNeeded = function () {
                             var driversNeededArray = [];
                                 for (var i = 0; i < this.deliveries.length; i++) {
@@ -92,11 +102,23 @@ function pizzaShop(location) {
 
 // call new pizzaShop Instances and add to shopArray:
 
+var pizzaShopLocations = [Beaverton, Hillsboro, Downtown, NorthEast, Clackamas, PDXairport];
 var shopArray = [];
 
+for (var i = 0; i < pizzaShopLocations.length; i++) {
+    shopArray.push(pizzaShop(pizzaShopLocations[i]));
+};
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
 
 
+
+
 // push pizzaShop object data to storeList in DATA.html:   later Table:
+
+        // create <div>s with id's (from Array) in DATA.html.
+
+        // link tables for each shop-Object into the <div - id's>
+
+        //
