@@ -178,82 +178,83 @@ function pizzaShop(shopName) {
 var shopArray = [];
 
 var Beaverton = new pizzaShop("Beaverton"); // [0]
-    Beaverton.makeOpeningHours();
-    Beaverton.pizzaGenerator();
-    Beaverton.deliveriesGenerator();
-    Beaverton.makeDrivers();
-    Beaverton.makeTimeslots();
-    Beaverton.makeShopInfo();
-    Beaverton.totalPizzas();
+    // Beaverton.makeOpeningHours();
+    // Beaverton.pizzaGenerator();
+    // Beaverton.deliveriesGenerator();
+    // Beaverton.makeDrivers();
+    // Beaverton.makeTimeslots();
+    // Beaverton.makeShopInfo();
+    // Beaverton.totalPizzas();
 
     shopArray.push(Beaverton);
 
 var Hillsboro = new pizzaShop("Hillsboro"); // [1]
-    Hillsboro.makeOpeningHours();
-    Hillsboro.pizzaGenerator();
-    Hillsboro.deliveriesGenerator();
-    Hillsboro.makeDrivers();
-    Hillsboro.makeTimeslots();
-    Hillsboro.makeShopInfo();
-    Hillsboro.totalPizzas();
+    // Hillsboro.makeOpeningHours();
+    // Hillsboro.pizzaGenerator();
+    // Hillsboro.deliveriesGenerator();
+    // Hillsboro.makeDrivers();
+    // Hillsboro.makeTimeslots();
+    // Hillsboro.makeShopInfo();
+    // Hillsboro.totalPizzas();
 
     shopArray.push(Hillsboro);
 
 
 var Downtown = new pizzaShop("Downtown"); // [2]
-    Downtown.makeOpeningHours();
-    Downtown.pizzaGenerator();
-    Downtown.deliveriesGenerator();
-    Downtown.makeDrivers();
-    Downtown.makeTimeslots();
-    Downtown.makeShopInfo();
-    Downtown.totalPizzas();
+    // Downtown.makeOpeningHours();
+    // Downtown.pizzaGenerator();
+    // Downtown.deliveriesGenerator();
+    // Downtown.makeDrivers();
+    // Downtown.makeTimeslots();
+    // Downtown.makeShopInfo();
+    // Downtown.totalPizzas();
 
     shopArray.push(Downtown);
 
 var NorthEast = new pizzaShop("NorthEast"); // [3]
-    NorthEast.makeOpeningHours();
-    NorthEast.pizzaGenerator();
-    NorthEast.deliveriesGenerator();
-    NorthEast.makeDrivers();
-    NorthEast.makeTimeslots();
-    NorthEast.makeShopInfo();
-    NorthEast.totalPizzas();
+    // NorthEast.makeOpeningHours();
+    // NorthEast.pizzaGenerator();
+    // NorthEast.deliveriesGenerator();
+    // NorthEast.makeDrivers();
+    // NorthEast.makeTimeslots();
+    // NorthEast.makeShopInfo();
+    // NorthEast.totalPizzas();
 
     shopArray.push(NorthEast);
 
 var Clackamas = new pizzaShop("Clackamas"); //[4]
-    Clackamas.makeOpeningHours();
-    Clackamas.pizzaGenerator();
-    Clackamas.deliveriesGenerator();
-    Clackamas.makeDrivers();
-    Clackamas.makeTimeslots();
-    Clackamas.makeShopInfo();
-    Clackamas.totalPizzas();
+    // Clackamas.makeOpeningHours();
+    // Clackamas.pizzaGenerator();
+    // Clackamas.deliveriesGenerator();
+    // Clackamas.makeDrivers();
+    // Clackamas.makeTimeslots();
+    // Clackamas.makeShopInfo();
+    // Clackamas.totalPizzas();
 
     shopArray.push(Clackamas);
 
 var PDXairport = new pizzaShop("PDXairport"); //[5]
-    PDXairport.makeOpeningHours();
-    PDXairport.pizzaGenerator();
-    PDXairport.deliveriesGenerator();
-    PDXairport.makeDrivers();
-    PDXairport.makeTimeslots();
-    PDXairport.makeShopInfo();
-    PDXairport.totalPizzas();
+    // PDXairport.makeOpeningHours();
+    // PDXairport.pizzaGenerator();
+    // PDXairport.deliveriesGenerator();
+    // PDXairport.makeDrivers();
+    // PDXairport.makeTimeslots();
+    // PDXairport.makeShopInfo();
+    // PDXairport.totalPizzas();
 
     shopArray.push(PDXairport);
 
 // call and initialize Data in shopArray:
 
-// for (var i = 0; i < shopArray; i++) {
-//     shopArray[i].makeOpeningHours();
-//     shopArray[i].pizzaGenerator();
-//     shopArray[i].deliveriesGenerator();
-//     shopArray[i].makeDrivers();
-//     shopArray[i].makeTimeslots();
-//     shopArray[i].totalPizzas();
-// };
+for (var i = 0; i < shopArray.length; i++) {
+    shopArray[i].makeOpeningHours();
+    shopArray[i].pizzaGenerator();
+    shopArray[i].deliveriesGenerator();
+    shopArray[i].makeDrivers();
+    shopArray[i].makeTimeslots();
+    shopArray[i].makeShopInfo();
+    shopArray[i].totalPizzas();
+};
 
 /*********************************************
         // TESTING OBJECT DATA: //
@@ -262,24 +263,24 @@ var PDXairport = new pizzaShop("PDXairport"); //[5]
 console.log('NorthEast: shopName: ' + shopArray[3].shopName);
 console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
 
-// var Hamburg = new pizzaShop("Hamburg");
-//
-// Hamburg.makeOpeningHours();
-// Hamburg.pizzaGenerator();
-// Hamburg.deliveriesGenerator();
-// Hamburg.makeDrivers();
-// Hamburg.makeTimeslots();
-// Hamburg.totalPizzas();
-//
-//
-//
-// console.log(Hamburg);
-// console.log('openingHours: ' + Hamburg.openingHours);
-// console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
-// console.log('deliveries: ' + Hamburg.deliveries);
-// console.log('drivers: ' + Hamburg.drivers);
-// console.log('timeslots: ' + Hamburg.timeslots);                 // Array
-// console.log('total: ' + Hamburg.total);
+var Hamburg = new pizzaShop("Hamburg");
+
+Hamburg.makeOpeningHours();
+Hamburg.pizzaGenerator();
+Hamburg.deliveriesGenerator();
+Hamburg.makeDrivers();
+Hamburg.makeTimeslots();
+Hamburg.totalPizzas();
+
+
+
+console.log(Hamburg);
+console.log('openingHours: ' + Hamburg.openingHours);
+console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
+console.log('deliveries: ' + Hamburg.deliveries);
+console.log('drivers: ' + Hamburg.drivers);
+console.log('timeslots: ' + Hamburg.timeslots);                 // Array
+console.log('total: ' + Hamburg.total);
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
@@ -318,24 +319,24 @@ makeShopTable();
 
 // push pizzaShop object data to timeslot-List in DATA.html:
 
-var makeDataList = function () {
-    var body = getElementById('dataList');
-    var list = document.createElement('ul');
-
-    //create a <li> for each this.timeslots inex:
-    for (var i = 0; i < this.timeslots.length; i++) {
-        var row = document.createElement('li');
-        var rowText = document.createTextNode(this.timeslots[i]);
-        row.appendChild(rowText);
-    };
-    list.appendChild(row);
-    body.appendChild(list);
-
-};  // makeDataList close
-
-makeDataList();
-
-
+// var makeDataList = function () {
+//     var body = getElementById('dataList');
+//     var list = document.createElement('ul');
+//
+//     //create a <li> for each this.timeslots inex:
+//     for (var i = 0; i < this.timeslots.length; i++) {
+//         var row = document.createElement('li');
+//         var rowText = document.createTextNode(this.timeslots[i]);
+//         row.appendChild(rowText);
+//     };
+//     list.appendChild(row);
+//     body.appendChild(list);
+//
+// };  // makeDataList close
+//
+// makeDataList();
+//
+//
 
 
         // create <div>s with id's (from Array) in DATA.html.
