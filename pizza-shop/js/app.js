@@ -11,20 +11,23 @@ var pizzaRandom = function (min, max) {
 
 // pizzaShop Object-Constructor:
 
-function pizzaShop(location) {
-    this.location = location;
-    this.openingHours = function () {   // makes hours-array with strings: ["8 am", "9 am", .....]
-                            var hours = [];
-                            for (var i = 8; i < 26; i++) {
+function pizzaShop(shopName) {
+
+    this.shopName = shopName;
+
+    this.openingHours = function () {                           // makes hours-array with strings: ["8 am", "9 am", .....]
+                            var shopHours = [];
+                            for (var i = 8; i < 27; i++) {
                                 if (i < 13){
-                                    hours.push(i + " am");
-                                } else if(i > 12){
-                                    hours.push(i + " pm");
+                                    shopHours.push(i + " am");
+                                } else if (i > 12 && i < 25){
+                                    shopHours.push((i -12) + " pm");
                                 } else {
-                                    hours.push(i + " am");
+                                    shopHours.push((i - 24) + " am");
                                 };
-                            return hours
+
                             }
+                            return shopHours;
                         };
 
     this.pizzaRange = [                         // index: 0 = pizzas min, 1 = pizzas max, 2 = deliveries min, 3 = deliveries max
@@ -164,10 +167,20 @@ var pizzaShopLocations = ["Beaverton", "Hillsboro", "Downtown", "NorthEast", "Cl
 var shopArray = [];
 
 for (var i = 0; i < pizzaShopLocations.length; i++) {
+    var x = i;
+    var x
     shopArray.push(pizzaShop(pizzaShopLocations[i]));
 };
 
-console.log(shopArray);
+
+var Hamburg = new pizzaShop("Hamburg");
+var hh = Hamburg.openingHours();
+
+
+console.log(Hamburg);
+console.log('openingHours: ' + hh);
+
+//console.log('ShopArray: ' + shopArray);
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
