@@ -69,6 +69,7 @@ function pizzaShop(shopName) {
                             for (var i = 0; i < this.pizzasMade.length; i++){
                                 baked += this.pizzasMade[i];
                             }
+                            this.total = baked;
                             return baked;
                         };
 
@@ -83,9 +84,8 @@ function pizzaShop(shopName) {
     this.driversNeeded = function () {
                             var driversNeededArray = [];
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
-
                                     var y = this.deliveries[i] / 3;
-                                    driversNeededArray.push(Math.ceiling(y));
+                                    driversNeededArray.push(Math.ceil(y));
                                 };
                             return driversNeededArray;
                          };
@@ -98,7 +98,7 @@ function pizzaShop(shopName) {
                             for (var i = 0; i < wholeDayArray.length; i ++) {
                                 wholeDayArray[i].push(this.pizzasMade[i]);
                                 wholeDayArray[i].push(this.deliveries[i]);
-                                wholeDayArray[i].push(this.driversNeeded[i]);
+                                wholeDayArray[i].push(this.drivers[i]);
                                 }
                             return wholeDayArray;
                       };
@@ -192,9 +192,10 @@ console.log('shopArray[2].shopName = "Downtown" : ' + shopArray[2].shopName);
 
 var Hamburg = new pizzaShop("Hamburg");
 Hamburg.pizzasMade = Hamburg.pizzaGenerator();
-Hamburg.total = Hamburg.totalPizzas();
-Hamburg.drivers = Hamburg.driversNeeded();
+Hamburg.totalPizzas();
 Hamburg.deliveries = Hamburg.deliveriesGenerator();
+Hamburg.drivers = Hamburg.driversNeeded();
+
 
 
 console.log(Hamburg);
