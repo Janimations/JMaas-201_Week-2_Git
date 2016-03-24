@@ -4,8 +4,8 @@
 // functions:
 
 var pizzaRandom = function (min, max) {
-    var x  = math.floor(math.random() * ((max+1) - min))
-    return x;
+    var x = (Math.random() * (max - min + 1)) + min;
+    return Math.floor(x);
 };
 
 
@@ -56,35 +56,38 @@ function pizzaShop(shopName) {
                         [5, 20, 6, 11] // 1 am
                     ];
 
-    this.pizzasMade = function () {                     // use 'this' because makePizzas() is called INSIDE of the pizzaShop Constructor!
+    this.pizzaGenerator = function () {                                                             // use 'this' because makePizzas() is called INSIDE of the pizzaShop Constructor!
                             var pizzasArray = [];
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
-                                    pizzasArray.push(pizzaRandom(this.pizzaRange[i][0], this.pizzaRange[i][1]) );  //make tihs the max for deliveries
+                                    pizzasArray.push(pizzaRandom(this.pizzaRange[i][0], this.pizzaRange[i][1]));  //make tihs the max for deliveries
                                 }
                             return pizzasArray;
                         };
 
     this.totalPizzas = function () {
-                            var total = 0;
+                            var baked = 0;
                             for (var i = 0; i < this.pizzasMade.length; i++){
-                                total += i;
+                                baked += this.pizzasMade[i];
                             }
-                            return total;
+                            return baked;
                         };
 
-    this.deliveries = function () {
+    this.deliveriesGenerator = function () {            // makes this.deliveries property below
                             var deliveriesArray = [];
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
-                                    deliveriesArray.push(pizzaRandom(this.pizzaRange[i][2], this.pizzasMade[i]) );  // index[i] from pizzasMade is the max for deliveries...
+                                    deliveriesArray.push(pizzaRandom(this.pizzaRange[i][2], this.pizzasMade[i]));  // this.pizzas is a property made from pizzasMade() that is called below - it is the max for deliveries...
                                 }
                             return deliveriesArray;
                         };
 
     this.driversNeeded = function () {
                             var driversNeededArray = [];
-                                for (var i = 0; i < this.deliveries.length; i++) {
-                                    driversNeededArray.push(math.ceiling(this.deliveries[i] / 3));
+                                for (var i = 0; i < this.pizzaRange.length; i++) {
+
+                                    var y = this.deliveries[i] / 3;
+                                    driversNeededArray.push(Math.ceiling(y));
                                 };
+                            return driversNeededArray;
                          };
 
     this.Timeslots = function () {
@@ -163,24 +166,45 @@ function pizzaShop(shopName) {
 
 // call new pizzaShop Instances and add to shopArray:
 
-var pizzaShopLocations = ["Beaverton", "Hillsboro", "Downtown", "NorthEast", "Clackamas", "PDXairport"];
 var shopArray = [];
 
-for (var i = 0; i < pizzaShopLocations.length; i++) {
-    var x = i;
-    var x
-    shopArray.push(pizzaShop(pizzaShopLocations[i]));
-};
+var Beaverton = new pizzaShop("Beaverton");
+    shopArray.push(Beaverton);
+
+var Hillsboro = new pizzaShop("Hillsboro");
+    shopArray.push(Hillsboro);
+
+var Downtown = new pizzaShop("Downtown");
+    shopArray.push(Downtown);
+
+var NorthEast = new pizzaShop("NorthEast");
+    shopArray.push(NorthEast);
+
+var Clackamas = new pizzaShop("Clackamas");
+    shopArray.push(Clackamas);
+
+var PDXairport = new pizzaShop("PDXairport");
+    shopArray.push(PDXairport);
+
+console.log('ShopArray: ' + shopArray);
+console.log('shopArray[2].shopName = "Downtown" : ' + shopArray[2].shopName);
 
 
 var Hamburg = new pizzaShop("Hamburg");
-var hh = Hamburg.openingHours();
+Hamburg.pizzasMade = Hamburg.pizzaGenerator();
+Hamburg.total = Hamburg.totalPizzas();
+Hamburg.drivers = Hamburg.driversNeeded();
+Hamburg.deliveries = Hamburg.deliveriesGenerator();
 
 
 console.log(Hamburg);
-console.log('openingHours: ' + hh);
+console.log('openingHours: ' + Hamburg.openingHours());
+console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
+console.log('deliveries: ' + Hamburg.deliveries);
+console.log('total: ' + Hamburg.total);                     //  Array
+console.log('drivers: ' + Hamburg.drivers);                   // Array
 
-//console.log('ShopArray: ' + shopArray);
+
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
