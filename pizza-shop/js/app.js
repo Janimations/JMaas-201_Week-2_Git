@@ -15,9 +15,11 @@ function pizzaShop(shopName) {
 
     this.shopName = shopName;
 
-    this.makeOpeningHours = function () {                           // makes hours-array with strings: ["8 am", "9 am", .....]
+    this.OpenClose = [8, 26];       // individual shop hours changed here:
+
+    this.makeOpeningHours = function (this.OpenClose[0], this.OpenClose[1]) {                           // makes hours-array with strings: ["8 am", "9 am", .....]
                                 var shopHours = [];
-                                for (var i = 8; i < 26; i++) {
+                                for (var i = open; i < close; i++) {
                                     if (i < 13){
                                         shopHours.push(i + " am");
                                     } else if (i > 12 && i < 25){
@@ -29,7 +31,7 @@ function pizzaShop(shopName) {
                                 }
                                 this.openingHours = shopHours;
                             };
-
+    // re-define pizzaRange with a new Array if OpenClose changes !!!
     this.pizzaRange = [                         // index: 0 = pizzas min, 1 = pizzas max, 2 = deliveries min, 3 = deliveries max
                         [0, 4, 0, 4], // 8 am
                         [0, 4, 0, 4], // 9 am
@@ -111,66 +113,8 @@ function pizzaShop(shopName) {
 
                             this.shopInfo = shopInfoArray;
                       };
+}; // pizzaShop constructor close
 
-};
-
-// // ShopData Object-Constructor:   //
-//
-// function shopData(pizzaShop-Object) {
-//
-//     this.location = this.pizzaShop-Object.location;          // will that work?
-//
-//     this.monday = function () {
-//
-//     };
-//     this.tuesday = function () {
-//
-//     };
-//     this.wednesday = function () {
-//
-//     };
-//     this.thursday = function () {
-//
-//     };
-//     this.friday = function () {
-//
-//     };
-//     this.Saturday = function () {
-//
-//     };
-//     this.Sunday = function () {
-//
-//     };
-//     this.weekTotal = function () {
-//
-//     };
-//
-//     this.weekAverage = function () {
-//
-//     };
-//
-// };  // shopData close
-
-// allShopsData  Object:
-
-//  var allShopsData = {
-//     mondayAverage = function () {
-//     },
-//     tuesdayAverage = function () {
-//     },
-//     wednesdayAverage = function () {
-//     },
-//     thursdayAverage = function () {
-//     },
-//     fridayAverage = function () {
-//     },
-//     SaturdayAverage = function () {
-//     },
-//     SundayAverage = function () {
-//     },
-//     weekAverage = function () {
-//     }
-// }  // allShopsData close
 
 
 // call new pizzaShop Instances and add to shopArray:
@@ -178,109 +122,107 @@ function pizzaShop(shopName) {
 var shopArray = [];
 
 var Beaverton = new pizzaShop("Beaverton"); // [0]
-    // Beaverton.makeOpeningHours();
-    // Beaverton.pizzaGenerator();
-    // Beaverton.deliveriesGenerator();
-    // Beaverton.makeDrivers();
-    // Beaverton.makeTimeslots();
-    // Beaverton.makeShopInfo();
-    // Beaverton.totalPizzas();
-
     shopArray.push(Beaverton);
 
 var Hillsboro = new pizzaShop("Hillsboro"); // [1]
-    // Hillsboro.makeOpeningHours();
-    // Hillsboro.pizzaGenerator();
-    // Hillsboro.deliveriesGenerator();
-    // Hillsboro.makeDrivers();
-    // Hillsboro.makeTimeslots();
-    // Hillsboro.makeShopInfo();
-    // Hillsboro.totalPizzas();
-
     shopArray.push(Hillsboro);
 
-
 var Downtown = new pizzaShop("Downtown"); // [2]
-    // Downtown.makeOpeningHours();
-    // Downtown.pizzaGenerator();
-    // Downtown.deliveriesGenerator();
-    // Downtown.makeDrivers();
-    // Downtown.makeTimeslots();
-    // Downtown.makeShopInfo();
-    // Downtown.totalPizzas();
-
     shopArray.push(Downtown);
 
 var NorthEast = new pizzaShop("NorthEast"); // [3]
-    // NorthEast.makeOpeningHours();
-    // NorthEast.pizzaGenerator();
-    // NorthEast.deliveriesGenerator();
-    // NorthEast.makeDrivers();
-    // NorthEast.makeTimeslots();
-    // NorthEast.makeShopInfo();
-    // NorthEast.totalPizzas();
-
     shopArray.push(NorthEast);
 
 var Clackamas = new pizzaShop("Clackamas"); //[4]
-    // Clackamas.makeOpeningHours();
-    // Clackamas.pizzaGenerator();
-    // Clackamas.deliveriesGenerator();
-    // Clackamas.makeDrivers();
-    // Clackamas.makeTimeslots();
-    // Clackamas.makeShopInfo();
-    // Clackamas.totalPizzas();
-
     shopArray.push(Clackamas);
 
 var PDXairport = new pizzaShop("PDXairport"); //[5]
-    // PDXairport.makeOpeningHours();
-    // PDXairport.pizzaGenerator();
-    // PDXairport.deliveriesGenerator();
-    // PDXairport.makeDrivers();
-    // PDXairport.makeTimeslots();
-    // PDXairport.makeShopInfo();
-    // PDXairport.totalPizzas();
-
     shopArray.push(PDXairport);
 
-// call and initialize Data in shopArray:
 
-for (var i = 0; i < shopArray.length; i++) {
-    shopArray[i].makeOpeningHours();
-    shopArray[i].pizzaGenerator();
-    shopArray[i].deliveriesGenerator();
-    shopArray[i].makeDrivers();
-    shopArray[i].makeTimeslots();
-    shopArray[i].makeShopInfo();
-    shopArray[i].totalPizzas();
-};
+
+// shopDataWeek Object:  (literal notation)
+// generates data for each day of the week:
+
+ var shopDataWeek = {
+    // gets total from all shops that day:
+    makeMondayTotal: function () {
+        // first call all methods in pizzaShop-Objects to "make" one day's worth of pizzas:
+        for (var i = 0; i < shopArray.length; i++) {
+            shopArray[i].makeOpeningHours();
+            shopArray[i].pizzaGenerator();
+            shopArray[i].deliveriesGenerator();
+            shopArray[i].makeDrivers();
+            shopArray[i].makeTimeslots();
+            shopArray[i].makeShopInfo();
+            shopArray[i].totalPizzas();
+        };
+        // then collect all totals from all pizzaShop-Objects:
+        var monday = 0;
+        for (var i = 0; i < shopArray[i].openingHours.length; i++) {      // shopArray[i].openingHours.length = in case i ndividual shop hours change they will have a different amount of timeslots
+            monday += shopArray[i].total;
+        };
+       shopDataWeek.mondayTotal = monday;
+    },
+
+
+    makeWeekTotal: function () {
+    }
+
+    mondayAverage = function () {
+    },
+    tuesdayAverage = function () {
+    },
+    wednesdayAverage = function () {
+    },
+    thursdayAverage = function () {
+    },
+    fridayAverage = function () {
+    },
+    SaturdayAverage = function () {
+    },
+    SundayAverage = function () {
+    },
+    weekAverage = function () {
+    }
+}  // shopDataWeek close
+
+// call shopDataWeek:
+shopDataWeek.makeMondayTotal();
+console.log('mondayTotal: ' + shopDataWeek.mondayTotal);
+console.log('Check shopArray:');
+
 
 /*********************************************
         // TESTING OBJECT DATA: //
 *********************************************/
 
-console.log('NorthEast: shopName: ' + shopArray[3].shopName);
-console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
+// console.log('NorthEast: shopName: ' + shopArray[3].shopName);
+// console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
+//
+// var Hamburg = new pizzaShop("Hamburg");
+//
+// Hamburg.makeOpeningHours();
+// Hamburg.pizzaGenerator();
+// Hamburg.deliveriesGenerator();
+// Hamburg.makeDrivers();
+// Hamburg.makeTimeslots();
+// Hamburg.totalPizzas();
+//
+//
+//
+// console.log(Hamburg);
+// console.log('openingHours: ' + Hamburg.openingHours);
+// console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
+// console.log('deliveries: ' + Hamburg.deliveries);
+// console.log('drivers: ' + Hamburg.drivers);
+// console.log('timeslots: ' + Hamburg.timeslots);                 // Array
+// console.log('total: ' + Hamburg.total);
 
-var Hamburg = new pizzaShop("Hamburg");
-
-Hamburg.makeOpeningHours();
-Hamburg.pizzaGenerator();
-Hamburg.deliveriesGenerator();
-Hamburg.makeDrivers();
-Hamburg.makeTimeslots();
-Hamburg.totalPizzas();
+/***************************************************************
+***************************************************************/
 
 
-
-console.log(Hamburg);
-console.log('openingHours: ' + Hamburg.openingHours);
-console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
-console.log('deliveries: ' + Hamburg.deliveries);
-console.log('drivers: ' + Hamburg.drivers);
-console.log('timeslots: ' + Hamburg.timeslots);                 // Array
-console.log('total: ' + Hamburg.total);
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
@@ -319,22 +261,22 @@ makeShopTable();
 
 // push pizzaShop object data to timeslot-List in DATA.html:
 
-// var makeDataList = function () {
-//     var body = getElementById('dataList');
-//     var list = document.createElement('ul');
-//
-//     //create a <li> for each this.timeslots inex:
-//     for (var i = 0; i < this.timeslots.length; i++) {
-//         var row = document.createElement('li');
-//         var rowText = document.createTextNode(this.timeslots[i]);
-//         row.appendChild(rowText);
-//     };
-//     list.appendChild(row);
-//     body.appendChild(list);
-//
-// };  // makeDataList close
-//
-// makeDataList();
+var makeDataList = function () {
+    var body = getElementById('dataList');
+    var list = document.createElement('ul');
+
+    //create a <li> for each this.timeslots inex:
+    for (var i = 0; i < this.timeslots.length; i++) {
+        var row = document.createElement('li');
+        var rowText = document.createTextNode(this.timeslots[i]);
+        row.appendChild(rowText);
+    };
+    list.appendChild(row);
+    body.appendChild(list);
+
+};  // makeDataList close
+
+makeDataList();
 //
 //
 
