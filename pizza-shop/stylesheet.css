@@ -1,8 +1,12 @@
+body {
+    text-align: center;
+}
+#penguin {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
 h1 {
     font-family: 'Poiret One', cursive;
     font-size: 80px;
-}
-div {
-    margin-left: auto;
-    margin-right: auto;
 }

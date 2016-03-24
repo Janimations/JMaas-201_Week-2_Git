@@ -1,4 +1,4 @@
-//Jmaas Week-2 Tuesday Lab Assignment:
+//Jmaas Week-2 Wednesday Lab Assignment:
 // ****** PIZZA SHOP ******* //
 
 // functions:
@@ -103,14 +103,22 @@ function pizzaShop(shopName) {
                                 }
                             this.timeslots = wholeDayArray;
                       };
+    this.makeShopInfo = function () {
+                            var shopInfoArray = [];
+                            shopInfoArray[0] = this.shopName;
+                            shopInfoArray[1] = this.openingHours[0] + " - " + (this.openingHours[17]);
+                            shopInfoArray[2] = "Tuesday - Sunday";
+
+                            this.shopInfo = shopInfoArray;
+                      };
 
 };
 
 // // ShopData Object-Constructor:   //
 //
-// function shopData(location) {
+// function shopData(pizzaShop-Object) {
 //
-//     this.location = location;
+//     this.location = this.pizzaShop-Object.location;          // will that work?
 //
 //     this.monday = function () {
 //
@@ -175,6 +183,7 @@ var Beaverton = new pizzaShop("Beaverton"); // [0]
     Beaverton.deliveriesGenerator();
     Beaverton.makeDrivers();
     Beaverton.makeTimeslots();
+    Beaverton.makeShopInfo();
     Beaverton.totalPizzas();
 
     shopArray.push(Beaverton);
@@ -185,6 +194,7 @@ var Hillsboro = new pizzaShop("Hillsboro"); // [1]
     Hillsboro.deliveriesGenerator();
     Hillsboro.makeDrivers();
     Hillsboro.makeTimeslots();
+    Hillsboro.makeShopInfo();
     Hillsboro.totalPizzas();
 
     shopArray.push(Hillsboro);
@@ -196,6 +206,7 @@ var Downtown = new pizzaShop("Downtown"); // [2]
     Downtown.deliveriesGenerator();
     Downtown.makeDrivers();
     Downtown.makeTimeslots();
+    Downtown.makeShopInfo();
     Downtown.totalPizzas();
 
     shopArray.push(Downtown);
@@ -206,6 +217,7 @@ var NorthEast = new pizzaShop("NorthEast"); // [3]
     NorthEast.deliveriesGenerator();
     NorthEast.makeDrivers();
     NorthEast.makeTimeslots();
+    NorthEast.makeShopInfo();
     NorthEast.totalPizzas();
 
     shopArray.push(NorthEast);
@@ -216,6 +228,7 @@ var Clackamas = new pizzaShop("Clackamas"); //[4]
     Clackamas.deliveriesGenerator();
     Clackamas.makeDrivers();
     Clackamas.makeTimeslots();
+    Clackamas.makeShopInfo();
     Clackamas.totalPizzas();
 
     shopArray.push(Clackamas);
@@ -226,6 +239,7 @@ var PDXairport = new pizzaShop("PDXairport"); //[5]
     PDXairport.deliveriesGenerator();
     PDXairport.makeDrivers();
     PDXairport.makeTimeslots();
+    PDXairport.makeShopInfo();
     PDXairport.totalPizzas();
 
     shopArray.push(PDXairport);
@@ -269,6 +283,42 @@ console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
+var makeShopTable = function () {
+
+    var body = document.getElementById("storeTable");
+
+    var tbl     = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+
+  // creating all cells
+  for (var i = 0; i < shopArray.length; i++) {          // creates table row
+
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 3; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode(shopArray[i].shopInfo[j]);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+  }
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tbl);
+  // sets the border attribute of tbl to 2;
+  tbl.setAttribute("border", "2");
+
+};  // makeShopTable close
+
+makeShopTable();
 
 
 
@@ -278,5 +328,31 @@ console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
         // create <div>s with id's (from Array) in DATA.html.
 
         // link tables for each shop-Object into the <div - id's>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //
