@@ -286,28 +286,22 @@ console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
 var makeShopTable = function () {
 
     var body = document.getElementById("storeTable");
-
     var tbl     = document.createElement("table");
     var tblBody = document.createElement("tbody");
 
-  // creating all cells
+  // creating all cells for each row:
   for (var i = 0; i < shopArray.length; i++) {          // creates table row
 
     var row = document.createElement("tr");
 
-    for (var j = 0; j < 3; j++) {
-      // Create a <td> element and a text node, make the text
-      // node the contents of the <td>, and put the <td> at
-      // the end of the table row
+    for (var x = 0; x < 3; x++) {
       var cell = document.createElement("td");
-      var cellText = document.createTextNode(shopArray[i].shopInfo[j]);
+      var cellText = document.createTextNode(shopArray[i].shopInfo[x]);
       cell.appendChild(cellText);
       row.appendChild(cell);
-    }
-
-    // add the row to the end of the table body
+    };
     tblBody.appendChild(row);
-  }
+};
 
   // put the <tbody> in the <table>
   tbl.appendChild(tblBody);
@@ -322,8 +316,27 @@ makeShopTable();
 
 
 
+// push pizzaShop object data to timeslot-List in DATA.html:
 
-// push pizzaShop object data to storeList in DATA.html:   later Table:
+var makeDataList = function () {
+    var body = getElementById('dataList');
+    var list = document.createElement('ul');
+
+    //create a <li> for each this.timeslots inex:
+    for (var i = 0; i < this.timeslots.length; i++) {
+        var row = document.createElement('li');
+        var rowText = document.createTextNode(this.timeslots[i]);
+        row.appendChild(rowText);
+    };
+    list.appendChild(row);
+    body.appendChild(list);
+
+};  // makeDataList close
+
+makeDataList();
+
+
+
 
         // create <div>s with id's (from Array) in DATA.html.
 
