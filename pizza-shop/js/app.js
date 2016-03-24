@@ -15,20 +15,20 @@ function pizzaShop(shopName) {
 
     this.shopName = shopName;
 
-    this.openingHours = function () {                           // makes hours-array with strings: ["8 am", "9 am", .....]
-                            var shopHours = [];
-                            for (var i = 8; i < 27; i++) {
-                                if (i < 13){
-                                    shopHours.push(i + " am");
-                                } else if (i > 12 && i < 25){
-                                    shopHours.push((i -12) + " pm");
-                                } else {
-                                    shopHours.push((i - 24) + " am");
-                                };
+    this.makeOpeningHours = function () {                           // makes hours-array with strings: ["8 am", "9 am", .....]
+                                var shopHours = [];
+                                for (var i = 8; i < 26; i++) {
+                                    if (i < 13){
+                                        shopHours.push(i + " am");
+                                    } else if (i > 12 && i < 25){
+                                        shopHours.push((i -12) + " pm");
+                                    } else {
+                                        shopHours.push((i - 24) + " am");
+                                    };
 
-                            }
-                            return shopHours;
-                        };
+                                }
+                                this.openingHours = shopHours;
+                            };
 
     this.pizzaRange = [                         // index: 0 = pizzas min, 1 = pizzas max, 2 = deliveries min, 3 = deliveries max
                         [0, 4, 0, 4], // 8 am
@@ -61,7 +61,7 @@ function pizzaShop(shopName) {
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
                                     pizzasArray.push(pizzaRandom(this.pizzaRange[i][0], this.pizzaRange[i][1]));  //make tihs the max for deliveries
                                 }
-                            return pizzasArray;
+                            this.pizzasMade = pizzasArray;
                         };
 
     this.totalPizzas = function () {
@@ -70,7 +70,6 @@ function pizzaShop(shopName) {
                                 baked += this.pizzasMade[i];
                             }
                             this.total = baked;
-                            return baked;
                         };
 
     this.deliveriesGenerator = function () {            // makes this.deliveries property below
@@ -78,29 +77,31 @@ function pizzaShop(shopName) {
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
                                     deliveriesArray.push(pizzaRandom(this.pizzaRange[i][2], this.pizzasMade[i]));  // this.pizzas is a property made from pizzasMade() that is called below - it is the max for deliveries...
                                 }
-                            return deliveriesArray;
+                            this.deliveries = deliveriesArray;
                         };
 
-    this.driversNeeded = function () {
+    this.makeDrivers = function () {
                             var driversNeededArray = [];
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
                                     var y = this.deliveries[i] / 3;
                                     driversNeededArray.push(Math.ceil(y));
                                 };
-                            return driversNeededArray;
+                            this.drivers = driversNeededArray;
                          };
 
-    this.Timeslots = function () {
-                            // make Array for the wholed day:
-                            wholeDayArray = this.openingHours;
+    this.makeTimeslots = function () {                                              // take data from pizzasMade, deliveries and driversNeeded and push them into each index of this.openingHours:
 
-                            // take data from pizzasMade, deliveries and driversNeeded and push them into each index of wholeDayArray:
-                            for (var i = 0; i < wholeDayArray.length; i ++) {
-                                wholeDayArray[i].push(this.pizzasMade[i]);
-                                wholeDayArray[i].push(this.deliveries[i]);
-                                wholeDayArray[i].push(this.drivers[i]);
+                            var wholeDayArray = [];
+                            for (var i = 0; i < this.openingHours.length; i ++) {
+                                var oneTimeslot = [];
+                                oneTimeslot.push(this.openingHours[i]);
+                                oneTimeslot.push(this.pizzasMade[i]);
+                                oneTimeslot.push(this.deliveries[i]);
+                                oneTimeslot.push(this.drivers[i]);
+
+                                wholeDayArray.push(oneTimeslot);
                                 }
-                            return wholeDayArray;
+                            this.timeslots = wholeDayArray;
                       };
 
 };
@@ -191,21 +192,23 @@ console.log('shopArray[2].shopName = "Downtown" : ' + shopArray[2].shopName);
 
 
 var Hamburg = new pizzaShop("Hamburg");
-Hamburg.pizzasMade = Hamburg.pizzaGenerator();
+
+Hamburg.makeOpeningHours();
+Hamburg.pizzaGenerator();
+Hamburg.deliveriesGenerator();
+Hamburg.makeDrivers();
+Hamburg.makeTimeslots();
 Hamburg.totalPizzas();
-Hamburg.deliveries = Hamburg.deliveriesGenerator();
-Hamburg.drivers = Hamburg.driversNeeded();
 
 
 
 console.log(Hamburg);
-console.log('openingHours: ' + Hamburg.openingHours());
+console.log('openingHours: ' + Hamburg.openingHours);
 console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
 console.log('deliveries: ' + Hamburg.deliveries);
-console.log('total: ' + Hamburg.total);                     //  Array
-console.log('drivers: ' + Hamburg.drivers);                   // Array
-
-
+console.log('drivers: ' + Hamburg.drivers);
+console.log('timeslots: ' + Hamburg.timeslots);                 // Array
+console.log('total: ' + Hamburg.total);
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
