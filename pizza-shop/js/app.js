@@ -169,46 +169,103 @@ function pizzaShop(shopName) {
 
 var shopArray = [];
 
-var Beaverton = new pizzaShop("Beaverton");
+var Beaverton = new pizzaShop("Beaverton"); // [0]
+    Beaverton.makeOpeningHours();
+    Beaverton.pizzaGenerator();
+    Beaverton.deliveriesGenerator();
+    Beaverton.makeDrivers();
+    Beaverton.makeTimeslots();
+    Beaverton.totalPizzas();
+
     shopArray.push(Beaverton);
 
-var Hillsboro = new pizzaShop("Hillsboro");
+var Hillsboro = new pizzaShop("Hillsboro"); // [1]
+    Hillsboro.makeOpeningHours();
+    Hillsboro.pizzaGenerator();
+    Hillsboro.deliveriesGenerator();
+    Hillsboro.makeDrivers();
+    Hillsboro.makeTimeslots();
+    Hillsboro.totalPizzas();
+
     shopArray.push(Hillsboro);
 
-var Downtown = new pizzaShop("Downtown");
+
+var Downtown = new pizzaShop("Downtown"); // [2]
+    Downtown.makeOpeningHours();
+    Downtown.pizzaGenerator();
+    Downtown.deliveriesGenerator();
+    Downtown.makeDrivers();
+    Downtown.makeTimeslots();
+    Downtown.totalPizzas();
+
     shopArray.push(Downtown);
 
-var NorthEast = new pizzaShop("NorthEast");
+var NorthEast = new pizzaShop("NorthEast"); // [3]
+    NorthEast.makeOpeningHours();
+    NorthEast.pizzaGenerator();
+    NorthEast.deliveriesGenerator();
+    NorthEast.makeDrivers();
+    NorthEast.makeTimeslots();
+    NorthEast.totalPizzas();
+
     shopArray.push(NorthEast);
 
-var Clackamas = new pizzaShop("Clackamas");
+var Clackamas = new pizzaShop("Clackamas"); //[4]
+    Clackamas.makeOpeningHours();
+    Clackamas.pizzaGenerator();
+    Clackamas.deliveriesGenerator();
+    Clackamas.makeDrivers();
+    Clackamas.makeTimeslots();
+    Clackamas.totalPizzas();
+
     shopArray.push(Clackamas);
 
-var PDXairport = new pizzaShop("PDXairport");
+var PDXairport = new pizzaShop("PDXairport"); //[5]
+    PDXairport.makeOpeningHours();
+    PDXairport.pizzaGenerator();
+    PDXairport.deliveriesGenerator();
+    PDXairport.makeDrivers();
+    PDXairport.makeTimeslots();
+    PDXairport.totalPizzas();
+
     shopArray.push(PDXairport);
 
-console.log('ShopArray: ' + shopArray);
-console.log('shopArray[2].shopName = "Downtown" : ' + shopArray[2].shopName);
+// call and initialize Data in shopArray:
 
+// for (var i = 0; i < shopArray; i++) {
+//     shopArray[i].makeOpeningHours();
+//     shopArray[i].pizzaGenerator();
+//     shopArray[i].deliveriesGenerator();
+//     shopArray[i].makeDrivers();
+//     shopArray[i].makeTimeslots();
+//     shopArray[i].totalPizzas();
+// };
 
-var Hamburg = new pizzaShop("Hamburg");
+/*********************************************
+        // TESTING OBJECT DATA: //
+*********************************************/
 
-Hamburg.makeOpeningHours();
-Hamburg.pizzaGenerator();
-Hamburg.deliveriesGenerator();
-Hamburg.makeDrivers();
-Hamburg.makeTimeslots();
-Hamburg.totalPizzas();
+console.log('NorthEast: shopName: ' + shopArray[3].shopName);
+console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
 
-
-
-console.log(Hamburg);
-console.log('openingHours: ' + Hamburg.openingHours);
-console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
-console.log('deliveries: ' + Hamburg.deliveries);
-console.log('drivers: ' + Hamburg.drivers);
-console.log('timeslots: ' + Hamburg.timeslots);                 // Array
-console.log('total: ' + Hamburg.total);
+// var Hamburg = new pizzaShop("Hamburg");
+//
+// Hamburg.makeOpeningHours();
+// Hamburg.pizzaGenerator();
+// Hamburg.deliveriesGenerator();
+// Hamburg.makeDrivers();
+// Hamburg.makeTimeslots();
+// Hamburg.totalPizzas();
+//
+//
+//
+// console.log(Hamburg);
+// console.log('openingHours: ' + Hamburg.openingHours);
+// console.log('pizzasMade: ' + Hamburg.pizzasMade);          // Array  // IMPORTANT! creates Hamburg.pizzas property befoere it is called in .deliveries
+// console.log('deliveries: ' + Hamburg.deliveries);
+// console.log('drivers: ' + Hamburg.drivers);
+// console.log('timeslots: ' + Hamburg.timeslots);                 // Array
+// console.log('total: ' + Hamburg.total);
 
 // push pizzaShop object data to storeList in INDEX.html:   later Table:
 
