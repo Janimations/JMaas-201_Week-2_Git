@@ -125,6 +125,20 @@ function pizzaShop(shopName) {
 
                             this.shopInfo = shopInfoArray;
                       };
+    this.populateOject = function () {
+                            for (var i = 0; i < shopArray.length; i++) {
+                                // the order is important!
+                                this.makeOpeningHours();
+                                this.pizzaGenerator();
+                                this.deliveriesGenerator();
+                                this.makeDrivers();
+                                this.makeTimeslots();
+                                this.makeShopInfo();
+                                this.totalPizzas();
+                            };
+                        };
+    this.populateOject();    // calls populateOject() once during the initial creation of the pizzaShop-Object
+
 }; // pizzaShop constructor close
 
 
@@ -133,24 +147,9 @@ function pizzaShop(shopName) {
 
 var shopArray = [];
 
-var Beaverton = new pizzaShop("Beaverton"); // [0]
-    shopArray.push(Beaverton);
-
-var Hillsboro = new pizzaShop("Hillsboro"); // [1]
-    shopArray.push(Hillsboro);
-
-var Downtown = new pizzaShop("Downtown"); // [2]
-    shopArray.push(Downtown);
-
-var NorthEast = new pizzaShop("NorthEast"); // [3]
-    shopArray.push(NorthEast);
-
-var Clackamas = new pizzaShop("Clackamas"); //[4]
-    shopArray.push(Clackamas);
-
-var PDXairport = new pizzaShop("PDXairport"); //[5]
-    shopArray.push(PDXairport);
-
+for (var i = 0; i < makeShopArray.length; i++) {
+    shopArray[i] = new pizzaShop(makeShopArray[i]);
+};
 
 
 // shopDataWeek Object:  (literal notation)
