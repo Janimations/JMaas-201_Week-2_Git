@@ -1,16 +1,12 @@
-<!--
-//Jmaas Week-2 Tuesday Lab Assignment:
-// ****** PIZZA SHOP ******* //
--- >
-
 <!DOCTYPE html>
+
 <html lang="en">
+
     <head>
           <meta charset="utf-8"></meta>
           <title>sale-data</title>
           <link rel="stylesheet" href="stylesheet.css" type="text/css">
           <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-    </head>
     </head>
 
     <style>
@@ -20,6 +16,47 @@
     <body>
       <h1>Penguin-Pizza</h1>
       <h3>Sale Data:</h3>
+
+      <div id="form">
+
+        <div id="storeName">
+          <input id="locName" type="text"/>
+        </div>
+
+        <div id="addressForm">
+          <input id="street" type="text"/>
+          <input id="city" type="text"/>
+          <input id="postCode" type="text"/>
+          <input id="phoneNumber" type="text"/>
+        </div>
+
+        <div id="openClose">
+          <input id="openTime" type="text"/>
+          <input id="closeTime" type="text"/>
+        </div>
+
+        <div id="daysOpen">
+
+          <p>
+            Monday
+            <input id="monday" type="checkbox" name="monday" value="monday"/>
+            Tuesday
+            <input id="tuesday" type="checkbox" name="tuesday" value="tuesday"/>
+            Wednesday
+            <input id="wednesday" type="checkbox" name="wednesday" value="wednesday"/>
+            Thursday
+            <input id="thursday" type="checkbox" name="thursday" value="thursday"/>
+            Friday
+            <input id="friday" type="checkbox" name="friday" value="friday"/>
+            Saturday
+            <input id="saturday" type="checkbox" name="saturday" value="saturday"/>
+            Sunday
+            <input id="sunday" type="checkbox" name="sunday" value="sunday"/>
+          </p>
+
+        </div>
+
+      </div>
 
     <!-- Print data here:    | Location: | timeslot |pizzas | deliveries | drivers needed:  -->
 
