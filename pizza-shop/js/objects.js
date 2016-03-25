@@ -43,35 +43,35 @@ var makeShopArray = [
         "18560 SW Farmiington Rd., Beaverton, OR 97005, 503-649-3030",       // address: [1]
         [8, 26],                                                            // openClose: [2]
         ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], // days: [3]
-        [stats]                                                         // stats: [4]
+        stats                                                         // stats: [4]
     ],
     [
          "Hillsboro",
          "337 E Main St., Hillsboro, OR 97123, 503-693-7953",
          [8, 26],
          ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-         [stats]
+         stats
     ],
     [
          "Downtown",
          "732 SW Yamhill St., Portland, OR 97205, 971-703-4153",
          [8, 26],
          ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-         [stats]
+         stats
     ],
     [
          "NorthEast",
          "4935 NE 42nd ave., Portland, OR 97218, 503-288-4899",
          [8, 26],
          ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-         [stats]
+         stats
     ],
     [
          "PDXairport",
          "7000 NE Airport Way, Portland, OR 97218, 971-230-7090",
          [8, 26],
          ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-         [stats]
+         stats
     ]
 ];  // makeShopArray close
 
@@ -129,7 +129,7 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 
     this.pizzaRange = statsArray;
 
-    this.pizzaGenerator = function () {                                                             // use 'this' because makePizzas() is called INSIDE of the pizzaShop Constructor!
+    this.pizzaGenerator = function () {
                             var pizzasArray = [];
                                 for (var i = 0; i < this.pizzaRange.length; i++) {
                                     pizzasArray.push(pizzaRandom(this.pizzaRange[i][0], this.pizzaRange[i][1]));  //make tihs the max for deliveries
@@ -293,24 +293,24 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 // console.log('NorthEast: shopName: ' + shopArray[3].shopName);
 // console.log('NorthEast: pizzasMade: ' + shopArray[3].pizzasMade);
 //
-var Hamburg = new pizzaShop(makeShopArray[0][0], makeShopArray[0][1], makeShopArray[0][2], makeShopArray[0][3], makeShopArray[0][4]);
-
-Hamburg.makeOpeningHours();
-Hamburg.pizzaGenerator();
-Hamburg.deliveriesGenerator();
-Hamburg.makeDrivers();
-Hamburg.makeTimeslots();
-Hamburg.totalPizzas();
-
-
-
-console.log(Hamburg);
-console.log('openingHours: ' + Hamburg.openingHours);
-console.log('pizzasMade: ' + Hamburg.pizzasMade);
-console.log('deliveries: ' + Hamburg.deliveries);
-console.log('drivers: ' + Hamburg.drivers);
-console.log('timeslots: ' + Hamburg.timeslots);
-console.log('total: ' + Hamburg.total);
+// var Hamburg = new pizzaShop(makeShopArray[0][0], makeShopArray[0][1], makeShopArray[0][2], makeShopArray[0][3], makeShopArray[0][4]);
+//
+// Hamburg.makeOpeningHours();
+// Hamburg.pizzaGenerator();
+// Hamburg.deliveriesGenerator();
+// Hamburg.makeDrivers();
+// Hamburg.makeTimeslots();
+// Hamburg.totalPizzas();
+//
+//
+//
+// console.log(Hamburg);
+// console.log('openingHours: ' + Hamburg.openingHours);
+// console.log('pizzasMade: ' + Hamburg.pizzasMade);
+// console.log('deliveries: ' + Hamburg.deliveries);
+// console.log('drivers: ' + Hamburg.drivers);
+// console.log('timeslots: ' + Hamburg.timeslots);
+// console.log('total: ' + Hamburg.total);
 
 /****************************************************
 ****************************************************/
