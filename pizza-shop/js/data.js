@@ -6,6 +6,6 @@
 ***********************************************/
 
 // call makeDataList function:
-makeDayTable();
+// makeDayTable();
 
 // call makeAverage function:

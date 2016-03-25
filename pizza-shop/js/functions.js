@@ -10,7 +10,7 @@
    ****** GENERATE OBJECT DATA: ******
 ========================================*/
 
-shopDataWeek.makeMondayData();         // Monday (one day) only for testing
+//shopDataWeek.makeMondayData();         // Monday (one day) only for testing
 
 
 
@@ -32,7 +32,7 @@ shopDataWeek.makeMondayData();         // Monday (one day) only for testing
 
 var makeShopTable = function () {
 
-    var body = document.getElementById("storeTable");
+    var shopTableId = document.getElementById("shopTable");
     var tbl     = document.createElement("table");
     var tblBody = document.createElement("tbody");
 
@@ -63,24 +63,19 @@ var makeShopTable = function () {
 
 // ****** push pizzaShop object data to timeslot-List in DATA.html: ******
 
-var makeDataList = function () {
-    var body = getElementById('dataList');
-    var list = document.createElement('ul');
+var makeDayTable = function () {
 
-    //create a <li> for each this.timeslots inex:
-    for (var i = 0; i < this.timeslots.length; i++) {
-        var row = document.createElement('li');
-        var rowText = document.createTextNode(this.timeslots[i]);
-        row.appendChild(rowText);
-    };
-    list.appendChild(row);
-    body.appendChild(list);
+};  // makeDayTable close
 
-};  // makeDataList close
 
-// create <div>s with id's (from Array) in DATA.html.
 
-// link tables for each shop-Object into the <div - id's>
+
+var makeDayTable = function () {
+
+};  // makeDayTable close
+
+
+
 
 
 // ****** push average data from shopDataWeek to DATA.html: ******
