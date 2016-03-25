@@ -1,3 +1,5 @@
+console.log('randZZZ = ' + pizzaRandom(0,5));
+
 //Jmaas Week-2 Thursday Lab Assignment:
 // ****** PIZZA SHOP ******* //
 
@@ -8,6 +10,31 @@
 // function that makes a new "makeShopArray" item out of a form:
 
 
+var stats = [
+[0, 4, 0, 4], // 8 am
+[0, 4, 0, 4], // 9 am
+[0, 4, 0, 4], // 10 am
+
+[0, 7, 0, 4], // 11 am
+[0, 7, 0, 4], // 12 am
+[0, 7, 0, 4], // 1 pm
+
+[2, 15, 1, 4], // 2 pm
+[2, 15, 1, 4], // 3 pm
+[2, 15, 1, 4], // 4 pm
+
+[15, 35, 3, 8], // 5 pm
+[15, 35, 3, 8], // 6 pm
+[15, 35, 3, 8], // 7 pm
+
+[12, 31, 5, 12], // 8 pm
+[12, 31, 5, 12], // 9 pm
+[12, 31, 5, 12], // 10 pm
+
+[5, 20, 6, 11], // 11 pm
+[5, 20, 6, 11], // 12 pm
+[5, 20, 6, 11] // 1 am
+];
 
 
 var makeShopArray = [
@@ -51,31 +78,6 @@ var makeShopArray = [
 
 // MIN-MAX statsArray:
 
-var stats = [
-[0, 4, 0, 4], // 8 am
-[0, 4, 0, 4], // 9 am
-[0, 4, 0, 4], // 10 am
-
-[0, 7, 0, 4], // 11 am
-[0, 7, 0, 4], // 12 am
-[0, 7, 0, 4], // 1 pm
-
-[2, 15, 1, 4], // 2 pm
-[2, 15, 1, 4], // 3 pm
-[2, 15, 1, 4], // 4 pm
-
-[15, 35, 3, 8], // 5 pm
-[15, 35, 3, 8], // 6 pm
-[15, 35, 3, 8], // 7 pm
-
-[12, 31, 5, 12], // 8 pm
-[12, 31, 5, 12], // 9 pm
-[12, 31, 5, 12], // 10 pm
-
-[5, 20, 6, 11], // 11 pm
-[5, 20, 6, 11], // 12 pm
-[5, 20, 6, 11] // 1 am
-];
 
 
 // call new pizzaShop and PizzaShopData Instances and add to shopArray:
@@ -92,10 +94,11 @@ for (var i = 0; i < makeShopArray.length; i++) {
 
 // functions:
 
-var pizzaRandom = function (min, max) {
+function pizzaRandom(min, max) {
     var x = (Math.random() * (max - min + 1)) + min;
     return Math.floor(x);
 };
+
 
 
 // pizzaShop Object-Constructor:  (pizzaSopData Object-Constructor below this one:)
@@ -186,7 +189,7 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
                             this.shopInfo = shopInfoArray;
                       };
     this.populateOject = function () {
-                            for (var i = 0; i < shopArray.length; i++) {
+                            for (var i = 0; i < makeShopArray.length; i++) {
                                 // the order is important!
                                 this.makeOpeningHours();
                                 this.pizzaGenerator();
@@ -207,34 +210,50 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 // shopDataWeek Object:  (literal notation)
 // generates data for each day of the week:
 
- // var shopDataWeek = {
- //    // gets total from all shops that day:
- //    makeMondayData: function () {
- //        // first call all methods in all pizzaShop-Objects to "make" one day's worth of pizzas:
- //        for (var i = 0; i < shopArray.length; i++) {
- //            // the order is important!
- //            shopArray[i].makeOpeningHours();
- //            shopArray[i].pizzaGenerator();
- //            shopArray[i].deliveriesGenerator();
- //            shopArray[i].makeDrivers();
- //            shopArray[i].makeTimeslots();
- //            shopArray[i].makeShopInfo();
- //            shopArray[i].totalPizzas();
- //        };
- //        // then collect all totals from all pizzaShop-Objects:
- //        var monday = 0;
- //        for (var i = 0; i < shopArray[i].openingHours.length; i++) {      // shopArray[i].openingHours.length = in case i ndividual shop hours change they will have a different amount of timeslots
- //            monday += shopArray[i].total;
- //        };
- //        function() {
- //            var allShopsMonday = [];
- //            for (var i = 0; i < shopArray.length; i++){
- //                allShopsMonday[i] = shopArray[i]
- //            };
- //        };
- //       shopDataWeek.mondayTotal = monday;
- //       shopDataWeek.timeslotsMonday =
- //   },  //makeMondayTotal close
+ var shopDataWeek = {
+
+    // gets total from all shops that day:
+        makeDayData: function () {
+            // first call all methods in all pizzaShop-Objects to "make" one day's worth of pizzas:
+            for (var i = 0; i < shopArray.length; i++) {
+                // the order is important!
+                shopArray[i].makeOpeningHours();
+                shopArray[i].pizzaGenerator();
+                shopArray[i].deliveriesGenerator();
+                shopArray[i].makeDrivers();
+                shopArray[i].makeTimeslots();
+                shopArray[i].makeShopInfo();
+                shopArray[i].totalPizzas();
+            };
+            // then collect all totals from all pizzaShop-Objects:
+            var oneday = 0;
+            for (var i = 0; i < shopArray[i].openingHours.length; i++) {      // shopArray[i].openingHours.length = in case individual shop hours change they will have a different amount of timeslots
+                oneday += shopArray[i].total;
+            };
+            var allShopsMonday = [];
+            for (var i = 0; i < shopArray.length; i++){
+                allShopsMonday[i] = shopArray[i].timeslots;  // makes a 2D Array out of each shop's timeslots-sets...
+            };
+        },  //makeDayData close
+
+        makeWeekData: function (){
+
+            //Monday
+
+
+        }, // makeWeekData close
+
+
+
+
+
+
+
+
+
+   }; //  shopDataWeek close
+
+
 
 
     // makeWeekTotal: function () {
