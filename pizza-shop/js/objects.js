@@ -101,7 +101,11 @@ function pizzaRandom(min, max) {
 
 
 
-// pizzaShop Object-Constructor:  (pizzaSopData Object-Constructor below this one:)
+// PIZZA-SHOP CONSTRUCTOR:
+
+// features:    - adjustable hours                          (changes amount of timeslots)
+//              - adjustable days open                      (data from that day will not be generated if that day is not in this.days array)
+//              - can be given differernt max-min stats     (Array-format) also through user input (Form on data.html page)
 
 function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 
@@ -131,7 +135,7 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 
     this.pizzaGenerator = function () {
                             var pizzasArray = [];
-                                for (var i = 0; i < this.pizzaRange.length; i++) {
+                                for (var i = 0; i < this.openingHours.length; i++) {
                                     pizzasArray.push(pizzaRandom(this.pizzaRange[i][0], this.pizzaRange[i][1]));  //make tihs the max for deliveries
                                 }
                             this.pizzasMade = pizzasArray;
@@ -155,7 +159,7 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 
     this.makeDrivers = function () {
                             var driversNeededArray = [];
-                                for (var i = 0; i < this.pizzaRange.length; i++) {
+                                for (var i = 0; i < this.openingHours.length; i++) {
                                     var y = this.deliveries[i] / 3;
                                         if (y < 1) {
                                             driversNeededArray.push(' --- no drivers needed --- ')
@@ -184,7 +188,7 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
                             var shopInfoArray = [];
                             shopInfoArray[0] = this.shopName;
                             shopInfoArray[1] = this.openingHours[0] + " - " + (this.openingHours[17]);
-                            shopInfoArray[2] = "Tuesday - Sunday";
+                            shopInfoArray[2] = this.days[0] + " - " + this.days[this.days.length -1];       //  this.days.length -1  is always the last index-item in the array
 
                             this.shopInfo = shopInfoArray;
                       };
@@ -212,10 +216,13 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 
  var shopDataWeek = {
 
-    // gets total from all shops that day:
-        makeDayData: function () {
+    // creates data for ALL pizzaShops that day:
+
+        makeDayData: function (weekDay, pizzaShopName) {    // weekDay = a string from this.days Array
+
             // first call all methods in all pizzaShop-Objects to "make" one day's worth of pizzas:
             for (var i = 0; i < shopArray.length; i++) {
+                if (shopArray[i].days.indexOf(weekDay) > 0) {
                 // the order is important!
                 shopArray[i].makeOpeningHours();
                 shopArray[i].pizzaGenerator();
@@ -224,27 +231,36 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
                 shopArray[i].makeTimeslots();
                 shopArray[i].makeShopInfo();
                 shopArray[i].totalPizzas();
+                }
             };
-            // then collect all totals from all pizzaShop-Objects:
-            var oneday = 0;
-            for (var i = 0; i < shopArray[i].openingHours.length; i++) {      // shopArray[i].openingHours.length = in case individual shop hours change they will have a different amount of timeslots
-                oneday += shopArray[i].total;
 
+            var oneday = [weekDay, 0];                        // weekday identifies the data set for that weekday...
+            var allShopsOneDay = [weekday];
 
+            for (var i = 0; i < shopArray.length; i++) {    // then collect all totals from all pizzaShop-Objects that day - if they are open.
 
+                if (shopArray[i].days.indexOf(weekDay) > 0) {       // if weekday is found in this.days array
+                    oneday[0] += shopArray[i].total;
 
-
-
-            
-            var allShopsMonday = [];
-            for (var i = 0; i < shopArray.length; i++){
-                allShopsMonday[i] = shopArray[i].timeslots;  // makes a 3D Array out of each shop's timeslots-sets...
+                    allShopsOneDay[i+1] = pizzaShopName;            // adds the name of the pizza shop before all the timeslots at index[0]
+                    allShopsOneDay[i] = shopArray[i].timeslots;     // makes a 3D Array in allShopsMonday out of each shop's timeslots-sets...
+                }
             };
+
+            this.oneDayAllShopsTotal = oneday;
+            this.oneDayAllShopsTimeslots =                // stores all shops data under week-Day, (as opposed to each weekday data under shop)
+
+
         },  //makeDayData close
 
         makeWeekData: function (){
 
-            //Monday
+            for (var i = 0; i < shopArray.length; i++) {
+
+                for (var x = 0; x < shopArray[x].days.length; x++) {                // in case a shop is open less than 6 days a week...
+
+                } // 1st for-loop
+            } // 2nd for-loop
 
 
         }, // makeWeekData close
