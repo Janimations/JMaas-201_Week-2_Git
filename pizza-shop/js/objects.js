@@ -229,10 +229,16 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
             var oneday = 0;
             for (var i = 0; i < shopArray[i].openingHours.length; i++) {      // shopArray[i].openingHours.length = in case individual shop hours change they will have a different amount of timeslots
                 oneday += shopArray[i].total;
-            };
+
+
+
+
+
+
+            
             var allShopsMonday = [];
             for (var i = 0; i < shopArray.length; i++){
-                allShopsMonday[i] = shopArray[i].timeslots;  // makes a 2D Array out of each shop's timeslots-sets...
+                allShopsMonday[i] = shopArray[i].timeslots;  // makes a 3D Array out of each shop's timeslots-sets...
             };
         },  //makeDayData close
 
