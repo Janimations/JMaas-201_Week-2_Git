@@ -8,3 +8,9 @@
 
 // call makeShopTable function:
 makeShopTable();
+
+console.log(shopArray);
+
+shopData.makeOneShopAllDays("Beaverton");
+
+console.log(shopWeekDataArray);
