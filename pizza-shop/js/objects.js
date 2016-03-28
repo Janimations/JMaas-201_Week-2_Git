@@ -40,35 +40,35 @@ var makeShopArray = [
         "Beaverton",                                                        // name: [0]
         "18560 SW Farmiington Rd., Beaverton, OR 97005, 503-649-3030",       // address: [1]
         [8, 26],                                                            // openClose: [2]
-        ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], // days: [3]
+        [" CLOSED ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], // days: [3]
         stats                                                         // stats: [4]
     ],
     [
          "Hillsboro",
          "337 E Main St., Hillsboro, OR 97123, 503-693-7953",
          [8, 26],
-         ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+         [" CLOSED ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
          stats
     ],
     [
          "Downtown",
          "732 SW Yamhill St., Portland, OR 97205, 971-703-4153",
          [8, 26],
-         ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+         [" CLOSED ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
          stats
     ],
     [
          "NorthEast",
          "4935 NE 42nd ave., Portland, OR 97218, 503-288-4899",
          [8, 26],
-         ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+         [" CLOSED ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
          stats
     ],
     [
          "PDXairport",
          "7000 NE Airport Way, Portland, OR 97218, 971-230-7090",
          [8, 26],
-         ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+         [" CLOSED ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
          stats
     ]
 ];  // makeShopArray close
@@ -81,6 +81,7 @@ var makeShopArray = [
 // call new pizzaShop and PizzaShopData Instances and add to shopArray:
 
 var shopArray = [];   // --- THIS IS WHERE pizzaShop OBJECTS LIVE ---
+var shopWeekDataArray = [];  // --- THIS IS WHERE storageObject OBJECTS LIVE --- // initiated by shopData.makeOneShopAllDays()
 
 for (var i = 0; i < makeShopArray.length; i++) {
 
@@ -206,16 +207,53 @@ function pizzaShop(name, address, openCloseArray, daysArray, statsArray) {
 
 }; // pizzaShop constructor close
 
+// Object constructor: to store data from the makeOneShopAllDays():
 
 function storageObject (pizzaShopName) {
-    this.mondayData = [" CLOSED "];
+
+    this.shopName = pizzaShopName;
+
+    this.mondayData = [" CLOSED "]; // timeslots
+    this.mondayTotal = 0;
+
     this.tuesdayData = [" CLOSED "];
+    this.tuesdayTotal = 0;
+
     this.wednesdayData = [" CLOSED "];
+    this.wednesdayTotal = 0;
+
     this.thursdayData = [" CLOSED "];
+    this.thursdayTotal = 0;
+
     this.fridayData = [" CLOSED "];
+    this.fridayTotal = 0;
+
     this.saturdayData = [" CLOSED "];
+    this.saturdayTotal = 0;
+
     this.sundayData = [" CLOSED "];
+    this.sundayTotal = 0;
+
+    this.weekTotal = 0;
+    this.weekAverage = 0;
+
+    this.makeWeekTotal = function() {
+                        this.weekTotal = this.mondayTotal + this.tuesdayTotal + this.wednesdayTotal + this.thursdayTotal + this.fridayTotal + this.saturdayTotal + this.sundayTotal;
+                        };
+
+    this.makeWeekAverage = function() {
+                        var x = shopArray.indexOf(this.shopName);
+
+                        var z = 0;  // count how many days this shop is open
+                        for (var i = 0; i < shopArray[x].days.length; i++) {
+                            if (shopArray[x].days[i] !== " CLOSED ") {
+                                z += 1;
+                            }
+                        }
+                        this.weekAverage = (this.weekTotal / z);
+                        };
 };
+
 
 // shopData Object:  (literal notation)
 // generates and stores data in pizzaShop objects in 3 different ways:
@@ -224,6 +262,18 @@ function storageObject (pizzaShopName) {
 //  - 3) one whole week of data, by shop
 
  var shopData = {
+
+        // 0) generate data for just one day:
+        oneDay: function(shopArrayIndex) {
+
+            shopArray[shopArrayIndex].makeOpeningHours();
+            shopArray[shopArrayIndex].pizzaGenerator();
+            shopArray[shopArrayIndex].deliveriesGenerator();
+            shopArray[shopArrayIndex].makeDrivers();
+            shopArray[shopArrayIndex].makeTimeslots();
+            shopArray[shopArrayIndex].totalPizzas();
+        }:
+
 
         // 2) generates and stores data for ALL pizzaShops that day:
 
@@ -279,41 +329,116 @@ function storageObject (pizzaShopName) {
 
 
         // 2) generates and stores data for ALL days for that pizzaShop:
-        makeOneShopAllDays: function (weekDay, pizzaShopName) {
+        makeOneShopAllDays: function (pizzaShopName) {
 
             // makes a storageObject that stores the timeslots from one pizzaShop for one whole week (for the days that shop is open):
-            this.storageObject = new storageObject (pizzaShopName) {
+            shopWeekDataArray.push(new storageObject (pizzaShopName));         // the new storageObject gets stored in shopWeekDataArray-Array
+
+                    // find index in shopArray:
+                    var x = shopArray.indexOf(pizzaShopName);
+
+                    // shopArray[x] data generated for each day its open, and stored in the storageObject
+
+                    if (shopArray[x].days[0] !== " CLOSED ") {                  // checks if open that day...
+                           // stores that days worth of timeslots in shopWeekDataArray for that day...
+                    };
 
 
-            }
+                    for (var i = 0; i < shopArray[x].days.length; i++) {
+
+                        switch (shopArray[x].days[i])
+                        {
+                            case: ("Monday"):
+                                this.oneDay(x);                                             // generates data for shopArray[x] for one day
+                                shopWeekDataArray[x].mondayData = shopArray[x].timeslots;
+                                shopWeekDataArray[x].mondayTotal = shopArray[x].total;
+
+                                break;
+
+                            case: ("Tuesday"):
+                                this.oneDay(x);
+                                shopWeekDataArray[x].tuesdayData = shopArray[x].timeslots;
+                                shopWeekDataArray[x].tuesdayTotal = shopArray[x].total;
+                                break;
+
+                            case: ("Wednesday"):
+                                this.oneDay(x);
+                                shopWeekDataArray[x].wednesdayData = shopArray[x].timeslots;
+                                shopWeekDataArray[x].wednesdayTotal = shopArray[x].total;
+                                break;
+
+                            case: ("Thursday"):
+                                this.oneDay(x);
+                                shopWeekDataArray[x].thursdayData = shopArray[x].timeslots;
+                                shopWeekDataArray[x].thursdayTotal = shopArray[x].total;
+                                break;
+
+                            case: ("Friday"):
+                                this.oneDay(x);
+                                shopWeekDataArray[x].fridayData = shopArray[x].timeslots;
+                                shopWeekDataArray[x].fridayTotal = shopArray[x].total;
+                                break;
+
+                            case: ("Saturday"):
+                                this.oneDay(x);
+                                shopWeekDataArray[x].saturdayData = shopArray[x].timeslots;
+                                shopWeekDataArray[x].fridayTotal = shopArray[x].total;
+                                break;
+
+
+                            case: ("Sunday"):
+                                this.oneDay(x);
+                                shopWeekDataArray[x].sundayData = shopArray[x].timeslots;
+                                shopWeekDataArray[x].sundayTotal = shopArray[x].total;
+                                break;
+
+
+                            default:
+                                console.log("Swith fault in ShopData.makeOneShopAllDays()");
+
+                        } // switch close
+
+                        // calculate average for all days open for this shop:
+                        shopWeekDataArray[x].makeWeekTotal();
+                        shopWeekDataArray[x].makeWeekAverage();
+
+                    }; // for-loop close
 
         }; // makeOneShopAllDays close
 
 
+
+        // 3) generates and stores data for all days for all shops (by shop):
+        makeAllShopsWeekData: function (){
+                for (var i = 0; i < shopArray.length; i++) {
+                        this.makeOneShopAllDays(shopArray[i].shopName);  // makes one weeks worth of data for each shop currently in shopArray
+                };
+        };
+
+        console.log(shopWeekDataArray);
+
+
+
+                // // for loop for all shops...
+                // for (var i = 0; i < shopArray.length; i++) {
+                //
+                //     shopWeekDataArray[i] = new storageOject (shopArray[i].shopName);
+                //
+                // };
 
 
 
 
         }; // shopData close
 
-        shopData.makeOneShopAllDays()
-        console.log(shopData.storageObject)
 
 
 
-        //
-        // // 3) generates and stores data for all days for all shops (by shop):
-        // makeAllShopsWeekData: function (){
-        //
-        //     for (var i = 0; i < shopArray.length; i++) {
-        //
-        //         for (var x = 0; x < shopArray[x].days.length; x++) {                // in case a shop is open less than 6 days a week...
-        //
-        //         } // 1st for-loop
-        //     } // 2nd for-loop
-        //
-        //
-        // }, // makeAllShopsWeekData close
+        // // TEST:
+        // shopData.makeOneShopAllDays(shopArray[0].days[0];, shopArray[0].shopName);
+        // console.log(shopData.storageObject)
+
+
 
 
 
